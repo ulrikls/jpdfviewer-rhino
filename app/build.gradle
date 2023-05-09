@@ -1,0 +1,33 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    exclusiveContent {
+        forRepository {
+            maven {
+                url "https://download.qoppa.com/maven/"
+            }
+        }
+        filter {
+            includeGroup "com.qoppa"
+        }
+    }
+}
+
+dependencies {
+    implementation('org.mozilla:rhino-runtime:1.7.13')
+    implementation('com.qoppa:jPDFViewer:2022R1.06')
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'jpdfviewer.rhino.App'
+}
